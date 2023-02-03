@@ -1,0 +1,156 @@
+@media screen and (min-width: 768px) {
+  header {
+    grid-template-areas: 
+    "img1 img1 img3 tagLine"
+    "img1 img1 img3 tagLine"
+    "img2 img2 img3 tagLine"
+    "img2 img2 img4 tagLine";
+    grid-template-columns: repeat(3, 1fr) 25%;
+    height: 400px;
+    padding: 2em;
+  }
+  .sidebar .boxLinkSide {
+    width: 70%;
+  }
+  header .img3 {
+    background-image: url('../img/hero3.jpg');
+  }
+  .tagLine h1 {
+    width: 3em;
+    margin-left: 2rem;
+    font-size: 3.5em;
+  }
+  .tagLine h1::after {
+    height: 65%;
+    width: 100vw;
+    left: -.8rem;
+  }
+  .main {
+    height: max-content;
+  }
+  .main .topContent {
+    flex-direction: row;
+  }
+  .main .topContent h2:nth-child(2) {
+    width: 10em;
+    text-align: right;
+  }
+  .main .mainContent {
+    grid-template-areas: 
+    "part2 part1";
+    grid-template-columns: repeat(2, 1fr);
+    height: 400px;
+  }
+  .mainContent :is(.part1, .part2) {
+    height: inherit;
+  }
+  .boxImg img {
+    width: 70%;
+    margin: 0 auto;
+  }
+  .boxImg .namePerson {
+    margin-left: 25%;
+  }
+  .part2 {
+    align-items: center;
+    justify-content: start;
+    padding: 0em;
+  }
+  .part2 h2 {
+    width: 70%;
+    margin-left: 0em;
+    font-size: 3.5em;
+  }
+  .part2 h3 {
+    font-size: 2.2em;
+    width: 70%;
+    padding: .5em .2em;
+  }
+  .offer .mainOffer {
+    display: grid;
+    width: 80%;
+    margin-top: 3em;
+  }
+  .mainOffer h2 {
+    font-size: 2em;
+    width: 60%;
+  }
+  .mainOffer h3 {
+    font-size: 1.2em;
+  }
+  .product {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: none;
+  }
+  .product .topContent {
+    border-right: 2px solid var(--blackFourty);
+  }
+  .review .mainReview {
+    justify-items: center;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .container {
+    background-color: yellow;
+  }
+  .sidebar .close {
+    margin-right: 2em;
+  }
+  header {
+    grid-template-columns: repeat(3, 1fr) 35%;
+    height: 700px;
+  }
+  .tagLine h1 {
+    font-size: 5.5rem;
+  }
+  .main .mainContent {
+    height: 700px;
+  }
+  .boxImg img {
+    max-width: 400px;
+    margin: 2em auto 0;
+  }
+  .part2 h2 {
+    font-size: 5.5em;
+  }
+  .product {
+    height: 600px;
+  }
+  .product .topContent h2 {
+    font-size: 5.2em;
+    width: 70%;
+    line-height: 1.5em;
+  }
+  .review .mainReview {
+    height: 500px;
+    padding: 2em;
+  }
+  .card .mainCard {
+    width: 100%;
+  }
+  .card .profileCard {
+    margin: 28px auto 10px;
+  }  
+  .card .mainCard {
+    width: 80%;
+    margin-top: 20px;
+  }
+  .mainCard p {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .container {
+    background-color: #fcfcfc;
+  }
+  .container :is(header, .main, .offer, .product, .review) {
+    min-width: 70%;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .review {
+    width: 70%;
+  }
+}

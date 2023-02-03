@@ -1,0 +1,725 @@
+:root {
+  --pinkPrimary: #FFA7A7;
+  --bluePrimary: #A7A7FF;
+  --greenPrimary: #A7FFA7;
+  --blackPrimary: #1c1c1c;
+  --blackSecondary: #4f4f4f;
+  --blackThridty: #3e3e3e;
+  --blackFourty: #303030;
+  --fontPrimary: "Saira Condensed";
+  --fontSecondary: "Bree Serif";
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  border: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--pinkPrimary);
+}
+
+*, *::after, *::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+i {
+  font-size: 24px;
+}
+
+h1, h2, h3 {
+  font-size: 24px;
+  font-family: var(--fontPrimary);
+  font-weight: 700;
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+.container {
+  min-height: 100vh;
+  width: 100%;
+  display: grid;
+  position: relative;
+}
+
+.container :where(header, .main, .offer, .product, .review) {
+  min-width: 100%;
+  min-height: 400px;
+  max-height: 1000px;
+  display: grid;
+  margin: auto;
+  overflow: hidden;
+}
+
+.container nav {
+  width: 100%;
+  min-height: 60px;
+  max-height: 70px;
+  background-color: transparent;
+  position: sticky;
+  top: 0;
+  border: 2px solid var(--blackFourty);
+  border-left: none;
+  border-right: none;
+  display: grid;
+  grid-template-columns: 80% 1fr;
+  background-color: #fff;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.logo {
+  display: inherit;
+  align-items: center;
+  padding: 0 1em;
+}
+
+.logo h1  {
+  font-family: Lobster;
+  letter-spacing: 1px;
+  color: var(--blackPrimary);
+  font-weight: normal;
+}
+
+.bars {
+  display: inherit;
+  background-color: var(--pinkPrimary);
+  color: #fff;
+}
+
+.bars i {
+  font-size: 2em;
+  margin: auto;
+}
+
+nav .logo {
+  border-right: 2px solid var(--blackFourty);
+  background-color: #fff;
+}
+
+.sidebar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vmax;
+  background-color: var(--blackFourty);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  clip-path: circle(12.9% at 100% 0);
+  opacity: 0;
+  transition: .3s;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.sidebar.active {
+  opacity: 1;
+  z-index: 3;
+  clip-path: circle(141.4% at 100% 0);
+}
+
+.sidebar .close {
+  font-size: 2em;
+  color: var(--pinkPrimary);
+  align-self: flex-end;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.sidebar .boxLinkSide {
+  width: 100%;
+  height: 500px;
+  max-height: max-content;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+.boxLinkSide .boxLink {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid var(--pinkPrimary);
+  font-size: 1.5em;  
+  font-family: var(--fontPrimary);
+  display: inherit;
+  cursor: pointer;
+  transition: .3s;
+  position: relative;
+  transform: translateY(-2em);
+  opacity: 0;
+}
+
+.boxLinkSide .boxLink.active {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.boxLink::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: pink;
+  clip-path: circle(12.9% at 100% 0);
+  transition: .3s;
+  opacity: 0;
+}
+
+.boxLink:hover::after{
+  opacity: 1;
+  clip-path: circle(141.4% at 100% 0);
+}
+
+.boxLink:hover a {
+  color: var(--blackFourty);
+}
+
+.boxLink a {
+  color: #fff;
+  margin: auto;
+  position: relative;
+  z-index: 7;
+}
+
+header {
+  background: linear-gradient(40deg, rgb(255, 187, 199), #fff);
+  grid-template-areas: 
+  "img1 img1"
+  "tagLine tagLine"
+  "img2 img2"
+  "img3 img4";
+  padding: 1.5rem;
+  gap: .5rem;
+  height: 300px;
+  grid-template-rows: 1fr 20% repeat(2, 1fr);
+}
+
+header :is(.img1, .img2, .img3, .img4) {
+  background-size: cover;
+  background-repeat: no-repeat;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: .5s;
+}
+
+header :is(.img1, .img3).active {
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+}
+
+header :is(.img2, .img4).active {
+  clip-path: polygon(100% 0, 100% 0%, 100% 100%, 100% 100%);
+}
+
+header .img1 {
+  grid-area: img1;
+  background-image: url('../img/hero1.jpg');
+  background-position: center bottom -1rem;
+}
+
+header .img2 {
+  grid-area: img2;
+  background-image: url('../img/hero2.jpg');
+  background-position: center top;
+}
+
+header .img3 {
+  grid-area: img3;
+  background-image: url('../img/product3_2.jpg');
+  background-position: center;
+}
+
+header .img4 {
+  grid-area: img4;
+  background-image: url('../img/hero4_1.jpg');
+}
+
+header .tagLine {
+  grid-area: tagLine;
+  display: flex;
+}
+
+.tagLine h1 {
+  color: var(--blackPrimary);
+  font-size: 2.8em;
+  margin: auto;
+  position: relative;
+  line-height: 1.2em;
+}
+
+.tagLine h1::after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  right: 0;
+  width: 75%;
+  height: 100%;
+  background-color: var(--pinkPrimary);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: 1s;
+}
+.tagLine h1.active::after {
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+}
+
+.tagLine h1 span {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  text-shadow: 2px 2px 1px rgba(46, 46, 46, 0.5);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  height: max-content;
+}
+
+.main .topContent, .review .topContent {
+  border: 2px solid var(--blackFourty);
+  min-width: 100%;
+  height: max-content;
+  border-right: none;
+  border-left: none;
+  padding: 1em 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.topContent h2 {
+  line-height: 1.2em;
+  letter-spacing: 2px;
+}
+
+.topContent .titleContent {
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+
+.main .topContent h2:nth-child(2) {
+  font-weight: normal;
+}
+
+.main .mainContent {
+  min-width: 100%;
+  height: max-content;
+  display: grid;
+  grid-template-areas: 
+  "part1"
+  "part2";
+}
+
+.mainContent .part1 {
+  grid-area: part1;
+  width: 100%;
+  height: 500px;
+  background-color: var(--bluePrimary);
+  border-bottom: 2px solid var(--blackFourty);
+  display: flex;
+  position: relative;
+}
+
+.part1 .boxImg {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  padding-top: 3em;
+}
+
+.boxImg img {
+  width: 80%;
+  max-width: 400px;
+  margin: 0 auto;
+  height: 70%;
+  transition: .5s;
+  opacity: 1;
+}
+
+.boxImg .namePerson {
+  color: #fff;
+  font-size: 1em;
+  font-family: var(--fontSecondary);
+  letter-spacing: 2px;
+  margin-top: 15px;
+  margin-left: 20%;
+  position: relative;
+  opacity: 1;
+  transition: .5s;
+}
+
+.boxImg.change img {
+  transform: translateX(-1em);
+  opacity: 0;
+}
+
+.namePerson::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 3px;
+  border-radius: 10px;
+  background-color: #fff;
+  left: -1.8em;
+  top: .6em;
+}
+
+.boxBtn {
+  width: 110px;
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.part1 .boxBtn {
+  gap: 10px;
+  bottom: 1em;
+  right: 1em;
+}
+
+.part1 .boxBtn .btn {
+  background-color: #FFf;
+  border-radius: 50%;
+  box-shadow: -3px 4px var(--blackSecondary);
+  transition: .3s;
+}
+
+.btn i {
+  color: var(--blackFourty);
+}
+
+.part1 .boxBtn .btn:focus { 
+  transform: translateX(-3px);
+  transform: translateY(4px);
+  box-shadow: none;
+}
+
+.mainContent .part2 {
+  grid-area: part2;
+  width: 100%;
+  min-height: 200px;
+  background-color: #fff;
+  border-bottom: 2px solid var(--blackFourty);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: .5em 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.part2 h2 {
+  margin-left: .5em;
+  font-size: 2.2em;
+  color: var(--blackFourty);
+  line-height: 1.5em;
+}
+
+.part2 h3 {
+  width: 100%;
+  font-size: 1.6em;
+  padding: 1em;
+  color: #fff;
+  background-color: var(--bluePrimary);
+  opacity: 1;
+  transition: .5s;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.part2 .highlight.change {
+  opacity: 0;
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  /* transform: translateX(-1em); */
+}
+
+.offer {
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 1em 0;
+}
+
+.offer .mainOffer {
+  display: flex;
+  width: 90%;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 1.5em auto;
+  flex-wrap: wrap;
+}
+
+.mainOffer h2 {
+  color: var(--blackPrimary);
+  font-size: 1.7em;
+  margin-bottom: 15px;
+  font-weight: 400;
+}
+
+.mainOffer h3 {
+  color: var(--blackFourty);
+  font-size: 1.2em;
+  font-family: var(--fontSecondary);
+  font-weight: 50;
+  letter-spacing: 1px;
+  padding-bottom: 1em;
+  border-bottom: 2px solid var(--blackPrimary);
+}
+
+.product {
+  background-color: #fff;
+  height: max-content;
+  border-top: 2px solid var(--blackFourty);
+  display: grid;
+  grid-template-rows: 100px 1fr;
+}
+
+.product .topContent {
+  width: 100%;
+  border-bottom: 2px solid var(--blackFourty);
+  display: flex;
+}
+
+.product .topContent h2 {
+  margin: auto;
+  color: var(--blackFourty);
+  font-size: 2.2em;
+  letter-spacing: 2px;
+}
+
+.product .mainProduct {
+  display: grid;
+  grid-template-areas: 
+  "product1 product1"
+  "product2 product3";
+  border-bottom: 2px solid var(--blackFourty);
+  gap: 1em;
+  padding: .5em 1em;
+}
+
+.mainProduct .product1 {
+  grid-area: product1;
+}
+
+.mainProduct .product2 {
+  grid-area: product2;
+}
+
+.mainProduct .product3 {
+  grid-area: product3;
+}
+
+.mainProduct .boxProduct {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+}
+
+.mainProduct .boxProduct::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  display: flex;
+  background-color: rgba(41, 36, 36, 0.7);
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fontSecondary);
+  font-size: 1.2em;
+  opacity: 0;
+  clip-path: polygon(100% 0, 100% 0%, 100% 100%, 100% 100%);
+  transition: .3s;
+}
+
+.boxProduct.product1::after {
+  content: "SH - Ring";
+}
+.boxProduct.product2::after {
+  content: "SH - Necklace";
+}
+.boxProduct.product3::after {
+  content: "SH - Clothes";
+}
+
+.mainProduct .boxProduct:hover::after {
+  opacity: 1;
+  clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
+}
+
+.product1 {
+  background-image: url('../img/product1_1.jpg');
+  background-size: cover;
+  background-position: center center;
+}
+.product2 {
+  background-image: url('../img/product2.jpg');
+  background-size: cover;
+  background-position: center center;
+}
+.product3 {
+  background-image: url('../img/product3_2.jpg');
+  background-size: cover;
+  background-position: center center;
+}
+
+.review {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.review .topContent {
+  border-top: none;
+  position: relative;
+}
+
+.review .topContent .titleContent {
+  width: 1em;
+}
+
+.review .topContent .boxBtn {
+  border: 2px solid var(--blackFourty);
+  border-bottom: none;
+  border-right: none;
+}
+
+.review .topContent .boxBtn .btn {
+  background-color: #fff;
+  border-right: 2px solid var(--blackFourty);
+}
+
+.review .topContent .boxBtn .btn:nth-child(2) {
+  background-color: var(--pinkPrimary);
+}
+.review .topContent .boxBtn .btn:nth-child(2) i {
+  color: #fff;
+}
+
+.review .mainReview {
+  height: 450px;
+  width: 100%;
+  padding: 1.5em .5em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: grid;
+  grid-template-columns: repeat(3, 100%);
+}
+
+.mainReview .card {
+  width: 80%;
+  height: 95%;
+  background-color: #fff;
+  margin: auto 0;
+  box-shadow: 3px 4px 5px rgba(51, 51, 51, 0.3), -3px -4px 5px rgba(51, 51, 51, 0.3);
+  border-radius: .5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.card .profileCard {
+  width: 100px;
+  height: 100px;
+  margin: 20px auto 10px;
+}
+
+.profileCard img {
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+  border: 2px solid var(--blackSecondary);
+}
+
+.card .mainCard {
+  width: 75%;
+  margin: 10px auto;
+  position: relative;
+}
+
+.mainCard h3 {
+  font-size: 1.2em;
+  text-align: center;
+  font-weight: 400;
+  color: var(--blackPrimary);
+}
+
+.mainCard p {
+  margin-top: 10px;
+  text-align: justify;  
+  font-family: var(--fontSecondary);
+  font-size: .8em;
+  color: var(--blackFourty);
+}
+
+.mainCard::before {
+  position: absolute;
+  top: 0;
+  left: -.3em;
+  content: open-quote;
+  font-size: 4em;
+  font-family: var(--fontPrimary);
+  color: var(--blackSecondary);
+}
+
+.container footer {
+  background-color: var(--blackThridty);
+  height: 80px;
+  max-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+  color: #fff;
+}
+
+footer h3 {
+  font-size: .9em;
+  letter-spacing: 2px;
+  font-weight: 200;
+  margin: auto 0;
+}
+
+footer .boxSosmed {
+  width: max-content;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.boxSosmed i {
+  font-size: 1.2em;
+  cursor: pointer;
+}

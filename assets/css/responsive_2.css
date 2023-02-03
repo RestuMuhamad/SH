@@ -1,0 +1,227 @@
+/* Laptop kecil */
+@media screen and (max-width: 1050px) {
+  .container :is(header, .product, .review) {
+    min-height: 650px;
+  }
+  .product {
+    grid-template-columns: 1fr 60%;
+  }
+  .boxCard .card {
+    width: 90%;
+  }
+  .card .accName {
+    font-size: 1.2em;
+  }
+  .card .paraf {
+    font-size: .8em;
+    margin: 10px auto 3em;
+  }
+  .boxFooter h2 {
+    font-size: 1.7em;
+    margin-bottom: 0.5em;
+  }
+  .boxFooter a {
+    font-size: 1.3em;
+  }
+  .boxFooter .boxSosmed {
+    gap: 0.5em;
+  }
+}
+
+/* Tablet */
+@media screen and (max-width: 900px) {
+  .sidebar {
+    padding: 40px;
+  }
+  .sidebar .close {
+    margin-right: 1em;
+  }
+  .boxLinkSide .boxLink {
+    width: 100%;
+    padding: 0.9rem;
+  }
+  .container :is(header, .product, .review) {
+    min-height: 450px;
+    max-height: max-content;
+  }
+  .hero .boxHeroImg {
+    padding: 20px;
+  }
+  .boxHeroImg .imgL2 {
+    background-size: 150%;
+    background-position: -4.8em -21em;
+  }
+  .boxHeroImg .imgL1 {
+    background-size: 280%;
+    background-position: -17.7em -7em;
+  }
+  .boxTagLine {
+    font-size: 3.5em;
+    line-height: 1.2em;
+  }
+  .hero .boxTagLine h1::after {
+    width: 4.55em;
+    height: 140px;
+  }
+  .review {
+    grid-template-rows: 25% 1fr;
+  }
+  section.review {
+    height: 600px;
+  }
+  .boxReview {
+    grid-template-columns: repeat(3, 50%);
+    overflow-x: auto;
+  }
+  .boxCard .card {
+    width: 80%;
+    height: 90%;
+    padding: 1em;
+  }
+  .card .paraf {
+    margin: 10px auto;
+  }
+  footer .boxContent {
+    padding: 2em 1em;
+    grid-template-columns: 1fr 2fr;
+  }
+  .boxFooter.boxContact {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+  .boxFooter.boxFeedback {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+  }
+}
+
+/* HP */
+@media screen and (max-width: 500px) {
+  nav {
+    font-size: 16px;
+  }
+  .sidebar {
+    padding: 10px;
+  }
+  .sidebar .close {
+    margin-right: .5em;
+    font-size: 2em;
+    margin-top: 1em;
+  }
+  .sidebar.active {
+    overflow: auto;
+  }
+  .sidebar .boxLinkSide {
+    width: 85%;
+    height: max-content;
+    gap: 30px;
+    margin-top: 20px;
+  }
+  .boxLinkSide .boxLink {
+    width: 100%;
+    padding: 0.2rem;
+    font-size: 2em;
+  }
+  header {
+    grid-template-rows: 12% 1fr;
+  }
+  .hero {
+    padding: 10px;
+    grid-template-areas: 
+    "imgL1"
+    "tagLine"
+    "imgL2";
+    grid-template-rows: 1fr 20% 1fr;
+  }
+  .hero .imgP1 {
+    display: none;
+  }
+  .hero .imgP2 {
+    display: none;
+  }
+  .hero .boxTagLine h1 {
+    width: 100%;
+  }
+  .boxTagLine h1 {
+    margin: auto;
+  }
+  .boxTagLine {
+    font-size: 2em;
+    line-height: 1.2em;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero .boxTagLine h1::after {
+    height: 100%;
+    width: 77%;
+    left: auto;
+    bottom: -.5em;
+    right: 0;
+    padding: 1em;
+  }
+  .product {
+    grid-template-columns: 1fr;
+    grid-template-rows: 20% 1fr;
+    height: 500px;
+  }
+  .product .boxTagLine h1 {
+    font-size: 1em;
+    width: max-content;
+  }
+  .product .boxTagLine .boxNext {
+    display: none;
+  }
+  .product .boxProduct {
+    border-left: none;
+    border-top: 3px solid var(--pinkPrimary);
+  }
+  .review {
+    grid-template-rows: 20% 1fr;
+  }
+  .review .boxArrow {
+    width: 110px;
+    height: 35px;
+  }
+  .boxReview {
+    grid-template-columns: repeat(3, 100%);
+    overflow-x: auto;
+  }
+  .boxCard {
+    margin-top: 20px;
+    height: 90%;
+  }
+  .boxCard .card {
+    height: 100%;
+  }
+  .card .paraf {
+    margin: 15px auto;
+  }
+  .boxReview .boxCard:nth-child(2) {
+    border: none;
+  }
+  .boxReview .boxCard:nth-child(3) {
+    display: flex;
+  }
+  footer {
+    grid-template-rows: 1fr 45px;
+    height: max-content;
+    font-size: .8em;
+  }
+  footer .boxContent {
+    grid-template-columns: repeat(2,1fr);
+  }
+  .boxFooter.boxContact {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+  }
+  .boxFooter.boxFeedback {
+    display: none;
+  }
+  .boxFooter h2 {
+    font-size: 1.4em;
+    margin-bottom: 0.5em;
+  }
+  .boxFooter a {
+    font-size: 1.2em;
+  }
+}
